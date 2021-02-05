@@ -22,7 +22,7 @@ my_public_url = f'https://{public_addr}:{public_port}'
 twitch = Twitch(app_id, app_secret)
 twitch.authenticate_app([])
 
-user_info = twitch.get_users(logins=['my_twitch_user'])
+user_info = twitch.get_users()
 print(user_info)
 user_id = user_info['data'][0]['id']
 # basic setup
@@ -34,7 +34,9 @@ hook.start()
 
 print('[+] Subscribing to hook ...')
 success, uuid = hook.subscribe_stream_changed(user_id, callback_stream_changed)
-pprint(success)
+if not success:
+    print('Could not subscribe to webhook ...')
+    hook.stop()
 pprint(twitch.get_webhook_subscriptions())
 # the webhook is now running and you are subscribed to the topic you want to listen to. lets idle a bit...
 input('[+] Press "Enter" to shut down...\n')
