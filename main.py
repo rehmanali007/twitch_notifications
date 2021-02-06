@@ -29,7 +29,8 @@ authentication_scope = [
 ]
 twitch.authenticate_app(authentication_scope)
 
-user_info = twitch.get_users()
+my_user_name = 'rehmanali1337'
+user_info = twitch.get_users(my_user_name)
 print(user_info)
 user_id = user_info['data'][0]['id']
 # basic setup
