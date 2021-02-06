@@ -22,6 +22,7 @@ my_public_url = f'https://{public_addr}:{public_port}'
 
 twitch = Twitch(app_id, app_secret)
 authentication_scope = [
+    AuthScope.BITS_READ,
     AuthScope.USER_EDIT,
     AuthScope.USER_READ_BROADCAST,
     AuthScope.USER_READ_EMAIL
