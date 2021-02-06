@@ -1,5 +1,6 @@
 from twitchAPI.twitch import Twitch
 from twitchAPI.webhook import TwitchWebHook
+from twitchAPI.types import AuthScope
 from pprint import pprint
 import json
 import ssl
@@ -20,7 +21,10 @@ public_port = config.get('PUBLIC_PORT')
 my_public_url = f'https://{public_addr}:{public_port}'
 
 twitch = Twitch(app_id, app_secret)
-twitch.authenticate_app([])
+authentication_scope = [
+    AuthScope.USER_EDIT, AuthScope.USER_READ_BROADCAST
+]
+twitch.authenticate_app(authentication_scope)
 
 user_info = twitch.get_users()
 print(user_info)
