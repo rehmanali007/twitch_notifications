@@ -1,3 +1,4 @@
+from twitchAPI.oauth import UserAuthenticator
 from twitchAPI.twitch import Twitch
 from twitchAPI.webhook import TwitchWebHook
 from twitchAPI.types import AuthScope
@@ -28,6 +29,16 @@ authentication_scope = [
     AuthScope.USER_READ_EMAIL
 ]
 twitch.authenticate_app(authentication_scope)
+
+twitch = Twitch(app_id, app_secret)
+
+target_scope = [AuthScope.BITS_READ]
+auth = UserAuthenticator(twitch, target_scope, force_verify=False)
+# this will open your default browser and prompt you with the twitch verification website
+token, refresh_token = auth.authenticate()
+# add User authentication
+twitch.set_user_authentication(token, target_scope, refresh_token)
+
 
 my_user_name = 'rehmanali1337'
 user_info = twitch.get_users(my_user_name)
