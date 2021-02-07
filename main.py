@@ -5,6 +5,8 @@ from twitchAPI.webhook import TwitchWebHook
 from pprint import pprint
 import json
 import ssl
+import logging
+import os
 
 config = json.load(open('config.json', 'r'))
 IP_ADDRESS = config.get('PUBLIC_ADDR')
@@ -16,6 +18,22 @@ print(f'Public address : {PUBLIC_ADDR}')
 
 TOKEN = config.get("TOKEN")
 REFRESH_TOKEN = config.get("REFRESH_TOKEN")
+
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+consoleHandler = logging.StreamHandler()
+consoleHandler.setLevel(logging.INFO)
+formator = logging.Formatter(
+    '[%(asctime)s] - [%(name)s] - %(levelname)s - %(message)s')
+consoleHandler.setFormatter(formator)
+if not os.path.exists('./logs'):
+    os.mkdir('logs')
+fileHandler = logging.FileHandler('logs/app.log')
+fileHandler.setLevel(logging.DEBUG)
+fileHandler.setFormatter(formator)
+logger.addHandler(fileHandler)
+logger.addHandler(consoleHandler)
 
 
 def callback_stream_changed(uuid, data):
