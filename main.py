@@ -104,15 +104,12 @@ print(f'User ID : {user_id}')
 success, uuid_stream = hook.subscribe_stream_changed(
     str(user_id), callback_stream_changed)
 print(f'Was subscription successfull?: {success}')
-success, uuid_user = hook.subscribe_user_changed(
-    str(user_id), callback_user_changed)
-print(f'Was subscription successfull?: {success}')
 
 # now we are fully set up and listening to our webhooks, lets wait for a user imput to stop again:
 input('[+] Press enter to stop...')
 
 # lets unsubscribe again
-success = hook.unsubscribe(uuid_user)
+success = hook.unsubscribe(uuid_stream)
 print(f'was unsubscription successfull?: {success}')
 # since hook.unsubscribe_on_stop is true, we dont need to unsubscribe manually, so lets just stop
 hook.stop()
