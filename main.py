@@ -84,11 +84,10 @@ print(f'User ID : {user_id}')
 
 # the hook has to run before you subscribe to any events since the twitch api will do a handshake this this webhook as soon as you subscribe
 success, uuid_stream = hook.subscribe_stream_changed(
-    user_id, callback_stream_changed)
-print(uuid_stream)
+    str(user_id), callback_stream_changed)
 print(f'Was subscription successfull?: {success}')
 success, uuid_user = hook.subscribe_user_changed(
-    user_id, callback_user_changed)
+    str(user_id), callback_user_changed)
 print(f'Was subscription successfull?: {success}')
 
 # now we are fully set up and listening to our webhooks, lets wait for a user imput to stop again:
