@@ -33,9 +33,10 @@ twitch.authenticate_app(authentication_scope)
 twitch = Twitch(app_id, app_secret)
 
 target_scope = [AuthScope.BITS_READ]
-auth = UserAuthenticator(twitch, target_scope, force_verify=False)
+auth = UserAuthenticator(twitch, target_scope, force_verify=True)
 # this will open your default browser and prompt you with the twitch verification website
 token, refresh_token = auth.authenticate()
+print(token, refresh_token)
 # add User authentication
 twitch.set_user_authentication(token, target_scope, refresh_token)
 
