@@ -12,6 +12,7 @@ PORT = config.get('PUBLIC_PORT')
 APP_ID = config.get('APP_ID')
 APP_SECRET = config.get('APP_SECRET')
 PUBLIC_ADDR = f'https://{IP_ADDRESS}:{PORT}'
+print(f'Public address : {PUBLIC_ADDR}')
 
 TOKEN = config.get("TOKEN")
 REFRESH_TOKEN = config.get("REFRESH_TOKEN")
