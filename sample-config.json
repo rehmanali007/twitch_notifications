@@ -1,6 +1,8 @@
 {
-    "PUBLIC_ADDR": "95.179.139.92",
+    "PUBLIC_ADDR": "0.0.0.0",
     "PUBLIC_PORT": 81,
     "APP_ID": "9v7m70xe88xf",
-    "APP_SECRET": "0avk65zey"
+    "APP_SECRET": "0avk65zey",
+    "TOKEN": "prcu84dqi55keun8gl4",
+    "REFRESH_TOKEN": "hzkll3l79hdio2uyskv07wag"
 }
